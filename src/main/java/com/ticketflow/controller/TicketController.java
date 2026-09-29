@@ -1,5 +1,6 @@
 package com.ticketflow.controller;
 
+import com.ticketflow.exception.TicketNaoEncontradoException;
 import com.ticketflow.model.Ticket;
 import com.ticketflow.repository.TicketRepository;
 import jakarta.validation.Valid;
@@ -29,7 +30,7 @@ public class TicketController {
     @GetMapping("/{id}")
     public Ticket buscarPorId(@PathVariable Long id) {
         return repository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Ticket nao encontrado: " + id));
+                .orElseThrow(() -> new TicketNaoEncontradoException(id));
     }
 
     // POST /tickets -> cria um novo chamado
