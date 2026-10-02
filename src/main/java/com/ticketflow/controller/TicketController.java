@@ -41,4 +41,9 @@ public class TicketController {
     public void deletar(@PathVariable Long id) {
         service.deletar(id);
     }
+
+    @GetMapping("/status")
+    public String status() {
+        return "TicketFLow no ar";
+    }
 }
